@@ -131,7 +131,7 @@ Una vez ejecutado el comando se descargarán las imagenes del docker-compose y s
 ~~~
 docker logs nextcloud
 ~~~
-* Vemos todos los contenedores:
+* Vemos todos los contenedores del docker-compose:
 ~~~
 docker-compose logs -f
 ~~~
