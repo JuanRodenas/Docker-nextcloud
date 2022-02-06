@@ -197,7 +197,7 @@ nano /usr/local/etc/php/conf.d/nextcloud.ini
 ```
 * Modificar estas líneas:
 ```
-memory_limit=-1 
+memory_limit=2048M
 upload_max_filesize=100G 
 post_max_size=100G
 ```
