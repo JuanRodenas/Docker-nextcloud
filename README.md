@@ -223,7 +223,7 @@ Una vez ingresadas la credenciales tendremos acceso al panel de control. Fíjens
 ![alt text](https://github.com/JuanRodenas/Nextcloud_server/blob/main/nextcloud-interfaz-web.png)
 
 ## Credits
-Si mi gía te ha gustado y tienes funcionando un NAS personal, nvítame a un café por mi trabajo.
+Si la guía te ha gustado y tienes funcionando un NAS personal, invítame a un café por mi trabajo.
 #
 <a href="https://www.paypal.com/donate/?hosted_button_id=HVJT2YDSHRZY2" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
