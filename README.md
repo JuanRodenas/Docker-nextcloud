@@ -222,6 +222,21 @@ Con el contenedor levantado tan solo tenemos que abrir el navegador web e ingres
 Una vez ingresadas la credenciales tendremos acceso al panel de control. Fíjense que estamos accediendo de forma segura mediante https y TLS.
 ![alt text](https://github.com/JuanRodenas/Nextcloud_server/blob/main/nextcloud-interfaz-web.png)
 
+## COPIAS DE SEGURIDAD
+Si queremos realizar una copias de seguridad de la configuración o recuperar el backup, Pulsa en la imagen para visitar el repositorio de copias de seguridad.
+<p align="center">
+    <a href="https://github.com/JuanRodenas/Backup/blob/main/README.md">
+        <img src="https://github.com/JuanRodenas/Pi-hole_list/blob/main/cloud-backup.png" width="400" height="200">
+    </a>
+    <br>
+    <strong>Pulsa en la imagen para visitar el repositorio de copias de seguridad.</strong>
+</p>
+
+### HELP ME
+<p> &nbsp;Si quieres contribuir a mejorar Nextcloud o tienes algún error, abre un <code>issue</code> y te ayudaré a solucionarlo:</p>
+<sup>ábreme un problema aquí <A HREF="https://github.com/JuanRodenas/Nextcloud_server/issues"> ISSUE </A>.</sup>
+
+
 ## Credits
 Si la guía te ha gustado y tienes funcionando un NAS personal, invítame a un café por mi trabajo.
 #
