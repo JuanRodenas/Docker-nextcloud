@@ -189,7 +189,7 @@ Añadimos al final del archivo
 Para solucionar el problema del `Fatal error: Allowed memory size of 2097152 bytes exhausted (tried to allocate 446464 bytes) in /var/www/html/3rdparty/composer/autoload_real.php on line 37`
 * Primero comprobamos el php:
 ```
-sudo -u www-data php -i | grep memory_limit
+php -i | grep memory_limit
 ```
 * Accedemos al contenedor de docker y cambiar en `/usr/local/etc/php/conf.d/nextcloud.ini` los parámetros de: 
 ```
