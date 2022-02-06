@@ -41,7 +41,6 @@ Directorios:
 
 #
 <blockquote class="is-info"><p>Los pasos que se explican a continuación están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
-#
 
 #### Crear la red interna para comunicar con los demás contenedores
 Creada la red interna, ya podemos levantar el contenedor
