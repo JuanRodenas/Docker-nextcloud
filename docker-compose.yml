@@ -12,7 +12,7 @@ services:
 
   db:
     restart: always
-    image: mariadb
+    image: mariadb:focal
     container_name: mariadb
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     networks:
