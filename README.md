@@ -63,18 +63,6 @@ En cambio en el contenedor de nextcloud añadimos la etiqueta:
       - traefik.enable=true
 ~~~~
 
-#### Configurar el Router para acceder a nextcloud
-A continuación definiremos un router con el nombre `nextcloud` para que que podamos acceder al servicio nextcloud. Para crear el router usaremos las siguientes etiquetas:
-~~~~
-      - traefik.http.routers.nextcloud.rule=Host(`nextcloud.ejemplo.org`)
-      - traefik.http.routers.nextcloud.tls=true
-      - traefik.http.routers.nextcloud.entrypoints=websecure
-      - traefik.http.routers.nextcloud.tls.certresolver=lets-encrypt
-~~~~
-
-* Con el uso de las etiquetas que acabo de citar conseguiremos lo siguiente:
-El dominio para acceder a nextcloud será `nextcloud.ejemplo.org`. En vuestro caso deberéis reemplazar la parte del dominio `nextcloud.ejemplo.org` por el dominio que tengáis. Nextcloud solo aceptará peticiones https, las peticiones http serán ignoradas. Definiremos el entrypoint para el contenedor nextcloud sea websecure. Los certificados usados para cifrar el tráfico serán los de Let’s Encrypt.
-
 #### Definir la red en que se levantará cada uno de los contenedores
 Al configurar Traefik v2 definimos que el contenedor nextcloud tiene que ser accesible desde fuera y dentro de nuestra red local. Por lo tanto mediante el siguiente código definimos que el contenedor nextcloud sea accesible a través de la red `internal` y la red `nextcloud`.
 Para los contenedores que tienen que ser accesibles al exterior usamos el networks `nextcloud`. Si el contenedor tiene que acceder tambien a la red local, le añadimos la red `internal`:
