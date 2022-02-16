@@ -87,7 +87,6 @@ services:
       - TRUSTED_PROXIES=172.19.0.0/16
     volumes:
       - /patch/to/data/nextcloud/nextcloud:/var/www/html
-      - ./php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
 
 networks:
   nextcloud:
