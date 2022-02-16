@@ -24,7 +24,6 @@ mkdir /patch/to/data/nextcloud/redis
 ~~~~
 Y le damos permisos al usuario www-data
 ~~~~
-sudo usermod -a -G www-data 'YOUR_USER'
 sudo chown -R www-data:www-data /patch/to/data/nextcloud/nextcloud
 sudo chown -R www-data:www-data /patch/to/data/nextcloud/mysql
 sudo chown -R www-data:www-data /patch/to/data/nextcloud/redis
