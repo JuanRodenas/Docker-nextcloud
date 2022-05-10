@@ -22,15 +22,14 @@ mkdir /patch/to/data/nextcloud/nextcloud
 mkdir /patch/to/data/nextcloud/mysql
 mkdir /patch/to/data/nextcloud/redis
 ~~~~
-Y le damos permisos al usuario www-data
-~~~~
-sudo chown -R www-data:www-data /patch/to/data/nextcloud/nextcloud
-sudo chown -R www-data:www-data /patch/to/data/nextcloud/mysql
-sudo chown -R www-data:www-data /patch/to/data/nextcloud/redis
-sudo chmod -R 775 /patch/to/data/nextcloud/nextcloud
-sudo chmod -R 775 /patch/to/data/nextcloud/mysql
-sudo chmod -R 775 /patch/to/data/nextcloud/redis
-~~~~
+
+#### Damos al user www-data y permisos a los archivos
+Damos permiso de escritura/lectura y le damos permisos al usuario www-data a la carpeta donde están los documentos
+<p>Le damos el grupo del usuario al usuario www-data:</p>
+<p>  &nbsp;&nbsp;<code>sudo usermod -a -G ${USER} www-data</code></p>
+<p>  Y le damos permisos al usuario www-data a los archivos:
+<p>  &nbsp;&nbsp;<code>sudo chown -R www-data:${USER} /patch/to/data/nextcloud</code></p>
+<p>  &nbsp;&nbsp;<code>sudo chmod -R 770 /patch/to/data/nextcloud</code></p>
 
 Directorios:
 * **files** Contendrá los archivos almacenados en nuestra nube. También contendrá los ficheros de configuración, ficheros de las aplicaciones instaladas, etc. Es importante realizar una copia de seguridad de este directorio/volumen de persistencia.
