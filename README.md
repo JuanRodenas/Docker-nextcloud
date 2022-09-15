@@ -8,8 +8,6 @@ Seguridad🔒 Rendimiento🚀 Control☑️
 * 📁 **Accede a tus datos** Puedes almacenar tus archivos, contactos, calendarios y más en un servidor de tu elección.
 * 🔄 **Sincroniza tus datos** Mantén tus archivos, contactos, calendarios y más sincronizados entre tus dispositivos.
 * 🙌 **Comparte tus datos** ...dando a otros acceso a las cosas que quieres que vean o con las que quieren colaborar.
-* 🖥 [**Instalar** un servidor por ti mismo](https://nextcloud.com/install/#instructions-server) en tu propio hardware o utilizando una de nuestras **aplicaciones** listas para usar.
-* 📦 Compra uno de los [impresionantes **dispositivos** que vienen con Nextcloud preinstalado](https://nextcloud.com/devices/)
 * 🚀 [Documentación oficial](https://docs.nextcloud.com/server/stable/user_manual/es/)
 
 
