@@ -4,7 +4,7 @@ services:
   db:
     image: mariadb:focal
     env_file:
-      - .env
+      - nx.env
     restart: always
     volumes:
       - ./mysql:/var/lib/mysql
@@ -19,6 +19,7 @@ services:
 
   app:
     image: nextcloud:fpm-alpine
+    container_name: nextcloud
     restart: always
     volumes:
       - ./nextcloud:/var/www/html
@@ -33,7 +34,7 @@ services:
     networks:
       - internal
     env_file:
-      - .env
+      - nx.env
 
   web:
     image: nginx:alpine

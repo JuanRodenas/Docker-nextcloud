@@ -28,7 +28,6 @@ Directorios:
 * **mysql** Contendrá la totalidad de ficheros de nuestra base de datos MySQL.
 * **redis** Contiene las bases de datos que genera el servidor Redis. Obviamente también es interesante realizar una copia de seguridad de este directorio.
 
-
 #
 <blockquote class="is-info"><p>Los pasos que se explican a continuación están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
 
@@ -41,12 +40,13 @@ docker network create nextcloud_internal
 
 #
 ## LEVANTAR EL CONTENEDOR DE NEXTCLOUD
-En la misma ubicación que hemos indicado la carpeta Nextcloud, descargamos el `docker-compose.yml`
-☑️ [Docker-compose](https://github.com/JuanRodenas/Nextcloud_server/blob/main/docker-compose.yml)
+En la misma ubicación que hemos indicado la carpeta Nextcloud, descargamos los archivos:
+☑️ [files](https://github.com/JuanRodenas/Nextcloud_server/tree/main/files)
 ```
-  - Modificamos la red `networks:`
-  - Modificamos las passwords y usuarios del `.env`
-  - Introducimos la red que levante en la red internal de docker: `TRUSTED_PROXIES=172.19.0.0/16`
+  - Modificamos la red `networks:` en el docker-compose
+  - Modificamos las passwords y usuarios del `nx.env`
+  - Modificamos el dominio en el `.env`
+  - Introducimos la red que levante en la red internal de docker-compose: `TRUSTED_PROXIES=172.19.0.0/16`
 ```
 
 * Levantamos el contenedor con:
@@ -117,6 +117,20 @@ php occ maintenance:repair && \
 php occ maintenance:update:htaccess && \
 php occ maintenance:mimetype:update-db
 ~~~
+
+#
+### Añadir tarea en el cron.
+Para generar la tarea en el cron que se ejecute cada cierto tiempo:
+<sup>Comprobar el nombre del contenedor, en el docker-compose se llama nextcloud.</sup>
+- Probamos si funciona con este comando:
+~~~
+docker exec --user www-data nextcloud php -f /var/www/html/cron.php
+~~~
+- Programa con crontab, en la maquina host, añadiremos el siguiente cron:
+~~~
+*/5  * * * * docker exec --user www-data nextcloud php -f /var/www/html/cron.php
+~~~
+Ahora cada 5 minutos, ejecutará cron.php.
 
 #
 ### ACCEDER A LA WEB O DASHBOARD DE NEXTCLOUD
