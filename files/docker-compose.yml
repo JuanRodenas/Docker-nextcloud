@@ -2,67 +2,44 @@ version: '3'
 
 services:
   db:
-    image: mariadb:focal
+    image: mariadb:jammy
+    command:
+      - "--transaction-isolation=READ-COMMITTED"
+      - "--binlog-format=ROW"
+      - "--default-storage-engine=innodb"
+      - "--character-set-server=utf8mb4"
     env_file:
       - nx.env
     restart: always
     volumes:
       - ./mysql:/var/lib/mysql
-    networks:
-      - internal
 
   redis:
-    image: redis:alpine
+    image: redis:latest
     restart: always
-    networks:
-      - internal
 
   app:
-    image: nextcloud:fpm-alpine
-    container_name: nextcloud
+    image: juanico/nextcloud:dev
     restart: always
     volumes:
       - ./nextcloud:/var/www/html
-      - ./conf/php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini:ro
     environment:
       - MYSQL_HOST=db:3306
       - REDIS_HOST=redis
+      - TRUSTED_PROXIES=IP_RED_DOCKER
       - TZ=Europe/Madrid
-      - TRUSTED_PROXIES=172.19.0.0/16
     depends_on:
       - db
       - redis
-    networks:
-      - internal
     env_file:
       - nx.env
 
   web:
-    image: nginx:alpine
+    image: juanico/nginx-puma:cloud
     restart: always
     volumes:
       - ./nextcloud:/var/www/html:ro
-      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./logs:/var/log/nginx/
     depends_on:
       - app
-    networks:
-      - internal
-      - proxy
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.nextcloud.loadbalancer.server.port=80
-      - traefik.http.routers.nextcloud.entrypoints=web
-      - traefik.http.routers.nextcloud.rule=Host(`${FQDN}`)
-      - traefik.http.middlewares.nextcloud-https-redirect.redirectscheme.scheme=websecure
-      - traefik.http.routers.nextcloud.middlewares=nextcloud-https-redirect
-      - traefik.http.routers.nextcloud-secure.entrypoints=websecure
-      - traefik.http.routers.nextcloud-secure.rule=Host(`${FQDN}`)
-      - traefik.http.routers.nextcloud-secure.tls=true
-      - traefik.http.routers.nextcloud-secure.tls.certresolver=letsencrypt
-
-networks:
-  internal:
-    external: false
-  proxy:
-    external: true
+    ports:
+      - 443:443
