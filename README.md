@@ -12,38 +12,12 @@ Seguridad🔒 Rendimiento🚀 Control☑️
 
 
 ## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS
-
-#### Crear los directorios donde se montarán los volúmenes de persistencia
-Creamos los directorios donde se montarán los volúmenes de persistencia
-~~~
-mkdir /patch/to/data/nextcloud/nextcloud
-mkdir /patch/to/data/nextcloud/mysql
-mkdir /patch/to/data/nextcloud/redis
-~~~~
-
-Directorios:
-* **files** Contendrá los archivos almacenados en nuestra nube. También contendrá los ficheros de configuración, ficheros de las aplicaciones instaladas, etc. Es importante realizar una copia de seguridad de este directorio/volumen de persistencia.
-* **mysql** Contendrá la totalidad de ficheros de nuestra base de datos MySQL.
-* **redis** Contiene las bases de datos que genera el servidor Redis. Obviamente también es interesante realizar una copia de seguridad de este directorio.
-
-#
-<blockquote class="is-info"><p>Los pasos que se explican a continuación están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
-
-#### Crear la red interna para comunicar con los demás contenedores
-Creada la red interna, ya podemos levantar el contenedor
-~~~~
-docker network create nextcloud_internal
-~~~~
-<sup>Anotar la red de la network para después.</sup>
-
-#
-## LEVANTAR EL CONTENEDOR DE NEXTCLOUD
+#### LEVANTAR EL CONTENEDOR DE NEXTCLOUD
 En la misma ubicación que hemos indicado la carpeta Nextcloud, descargamos los archivos:
 ☑️ [files](https://github.com/JuanRodenas/Nextcloud_server/tree/main/files)
 ```
-  - Modificamos la red `networks:` en el docker-compose
+  - Modificamos los volumenes del docker compose
   - Modificamos las passwords y usuarios del `nx.env`
-  - Modificamos el dominio en el `.env`
   - Introducimos la red que levante en la red internal de docker-compose: `TRUSTED_PROXIES=172.19.0.0/16`
 ```
 
